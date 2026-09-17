@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  api:
+    build: ./backend
+    container_name: bedrock-api
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_CONNECTION=postgres://user:password@db:5432/bedrock_db
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16
+    container_name: bedrock-db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=bedrock_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:
