@@ -1,0 +1,31 @@
+.footer {
+  background: var(--color-bedrock-navy);
+  color: white;
+  padding: 2rem;
+  margin-top: 3rem;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.footer-brand h3 {
+  font-family: var(--font-serif);
+  color: var(--color-bedrock-gold);
+}
+
+.footer-social-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.footer-bottom {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--color-bedrock-slate);
+  padding-top: 1rem;
+  text-align: center;
+}

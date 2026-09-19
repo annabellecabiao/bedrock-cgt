@@ -1,0 +1,60 @@
+.btn-primary {
+  background: var(--color-bedrock-gold);
+  color: var(--color-bedrock-navy);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-card);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.05);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-bedrock-gold);
+  border: 1px solid var(--color-bedrock-gold);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.input {
+  border: 1px solid var(--color-bedrock-slate);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-sans);
+}
+
+.input:focus {
+  outline: 2px solid var(--color-bedrock-gold);
+  outline-offset: 1px;
+}
+
+.card {
+  background: var(--color-bedrock-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  background: var(--color-bedrock-navy);
+  color: white;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--color-bedrock-slate);
+}

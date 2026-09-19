@@ -1,0 +1,15 @@
+:root {
+  --color-bedrock-navy: #0a1a2f;
+  --color-bedrock-gold: #d4a037;
+  --color-bedrock-slate: #2e3a45;
+  --color-bedrock-white: #f7f7f7;
+  --color-bedrock-red: #8b1e1e;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
