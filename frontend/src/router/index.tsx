@@ -33,7 +33,7 @@ import PersonnelInventoryPrint from "../pages/Personnel/InventoryPrint";
 import AdminDashboard from "../pages/Admin/Dashboard";
 import AdminProducts from "../pages/Admin/Products";
 import AdminInventory from "../pages/Admin/Inventory";
-import AdminSalesReport from "../pages/Admin/SalesReport";
+import AdminSalesReports from "../pages/Admin/SalesReports";
 import AdminCustomers from "../pages/Admin/Customers";
 import AdminSuppliers from "../pages/Admin/Suppliers";
 import AdminDeliveries from "../pages/Admin/Deliveries";
@@ -101,7 +101,7 @@ export default function AppRouter() {
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/products" element={<AdminProducts />} />
           <Route path="/admin/inventory" element={<AdminInventory />} />
-          <Route path="/admin/sales-report" element={<AdminSalesReport />} />
+          <Route path="/admin/sales-reports" element={<AdminSalesReports />} />
           <Route path="/admin/customers" element={<AdminCustomers />} />
           <Route path="/admin/suppliers" element={<AdminSuppliers />} />
           <Route path="/admin/deliveries" element={<AdminDeliveries />} />
