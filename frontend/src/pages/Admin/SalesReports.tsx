@@ -2,7 +2,7 @@ export default function AdminSalesReports() {
   return (
     <div className="min-h-screen bg-bedrock-white px-6 py-10">
       <h1 className="text-3xl font-serif text-bedrock-navy mb-6">
-        Admin – Sales Reports
+        Admin Sales Reports
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">

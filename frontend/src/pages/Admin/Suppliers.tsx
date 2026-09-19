@@ -2,7 +2,7 @@ export default function AdminSuppliers() {
   return (
     <div className="min-h-screen bg-bedrock-white px-6 py-10">
       <h1 className="text-3xl font-serif text-bedrock-navy mb-6">
-        Admin – Suppliers
+        Admin Suppliers
       </h1>
 
       <div className="bg-white shadow-card rounded-lg border border-bedrock-slate/20 p-6">
