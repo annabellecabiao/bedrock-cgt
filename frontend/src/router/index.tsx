@@ -38,7 +38,7 @@ import AdminCustomers from "../pages/Admin/Customers";
 import AdminSuppliers from "../pages/Admin/Suppliers";
 import AdminDeliveries from "../pages/Admin/Deliveries";
 import AdminTaxReports from "../pages/Admin/TaxReports";
-import AdminUsers from "../pages/Admin/Users";
+import AdminUsers from "../pages/Admin/UserManagement";
 
 // Protected Route Component
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
