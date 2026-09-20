@@ -48,68 +48,71 @@ export default function AppRouter() {
     <BrowserRouter>
       <Routes>
 
-        {/* PUBLIC ROUTES */}
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/product/:id" element={<ProductDetails />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/order-success" element={<OrderSuccess />} />
+      {/* HOME — OUTSIDE MAINLAYOUT */}
+      <Route path="/" element={<Home />} />
 
-          {/* AUTH */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Route>
+      {/* PUBLIC ROUTES USING MAINLAYOUT */}
+      <Route element={<MainLayout />}>
+        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order-success" element={<OrderSuccess />} />
 
-        {/* CUSTOMER ROUTES */}
-        <Route
-          element={
-            <ProtectedRoute allowedRoles={["customer"]}>
-              <MainLayout />
-            </ProtectedRoute>
-          }
-        >
-          <Route path="/customer/dashboard" element={<CustomerDashboard />} />
-          <Route path="/customer/orders" element={<CustomerOrders />} />
-          <Route path="/customer/orders/:id" element={<CustomerOrderDetails />} />
-        </Route>
+        {/* AUTH */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Route>
 
-        {/* PERSONNEL ROUTES — INVENTORY ONLY */}
-        <Route
-          element={
-            <ProtectedRoute allowedRoles={["personnel"]}>
-              <PersonnelLayout />
-            </ProtectedRoute>
-          }
-        >
-          <Route path="/personnel/dashboard" element={<PersonnelDashboard />} />
-          <Route path="/personnel/inventory" element={<PersonnelInventory />} />
-          <Route path="/personnel/inventory/print" element={<PersonnelInventoryPrint />} />
-        </Route>
+      {/* CUSTOMER ROUTES */}
+      <Route
+        element={
+          <ProtectedRoute allowedRoles={["customer"]}>
+            <MainLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="/customer/dashboard" element={<CustomerDashboard />} />
+        <Route path="/customer/orders" element={<CustomerOrders />} />
+        <Route path="/customer/orders/:id" element={<CustomerOrderDetails />} />
+      </Route>
 
-        {/* ADMIN ROUTES */}
-        <Route
-          element={
-            <ProtectedRoute allowedRoles={["admin"]}>
-              <AdminLayout />
-            </ProtectedRoute>
-          }
-        >
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/products" element={<AdminProducts />} />
-          <Route path="/admin/inventory" element={<AdminInventory />} />
-          <Route path="/admin/sales-reports" element={<AdminSalesReports />} />
-          <Route path="/admin/customers" element={<AdminCustomers />} />
-          <Route path="/admin/suppliers" element={<AdminSuppliers />} />
-          <Route path="/admin/deliveries" element={<AdminDeliveries />} />
-          <Route path="/admin/tax-reports" element={<AdminTaxReports />} />
-          <Route path="/admin/users" element={<AdminUsers />} />
-        </Route>
+      {/* PERSONNEL ROUTES */}
+      <Route
+        element={
+          <ProtectedRoute allowedRoles={["personnel"]}>
+            <PersonnelLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="/personnel/dashboard" element={<PersonnelDashboard />} />
+        <Route path="/personnel/inventory" element={<PersonnelInventory />} />
+        <Route path="/personnel/inventory/print" element={<PersonnelInventoryPrint />} />
+      </Route>
 
-      </Routes>
+      {/* ADMIN ROUTES */}
+      <Route
+        element={
+          <ProtectedRoute allowedRoles={["admin"]}>
+            <AdminLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/products" element={<AdminProducts />} />
+        <Route path="/admin/inventory" element={<AdminInventory />} />
+        <Route path="/admin/sales-reports" element={<AdminSalesReports />} />
+        <Route path="/admin/customers" element={<AdminCustomers />} />
+        <Route path="/admin/suppliers" element={<AdminSuppliers />} />
+        <Route path="/admin/deliveries" element={<AdminDeliveries />} />
+        <Route path="/admin/tax-reports" element={<AdminTaxReports />} />
+        <Route path="/admin/users" element={<AdminUsers />} />
+      </Route>
+
+    </Routes>
+
     </BrowserRouter>
   );
 }
