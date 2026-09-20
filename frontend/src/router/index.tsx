@@ -48,9 +48,13 @@ export default function AppRouter() {
     <BrowserRouter>
       <Routes>
 
+       {/* HOME — NOW USING MAINLAYOUT */}
+    <Route element={<MainLayout />}>
+      <Route path="/" element={<Home />} />
+    </Route>
+
       {/* PUBLIC ROUTES USING MAINLAYOUT */}
       <Route element={<MainLayout />}>
-        <Route path="/" element={<Home />} />
         <Route path="/catalog" element={<Catalog />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/about" element={<About />} />
