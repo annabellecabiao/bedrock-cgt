@@ -46,12 +46,12 @@ import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 export default function AppRouter() {
   return (
     <BrowserRouter>
-      <Routes>
+    <Routes>
 
-       {/* HOME — NOW USING MAINLAYOUT */}
-    <Route element={<MainLayout />}>
-      <Route path="/" element={<Home />} />
-    </Route>
+      {/* HOME — NOW USING MAINLAYOUT */}
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Home />} />
+      </Route>
 
       {/* PUBLIC ROUTES USING MAINLAYOUT */}
       <Route element={<MainLayout />}>
@@ -114,7 +114,7 @@ export default function AppRouter() {
       </Route>
 
     </Routes>
+  </BrowserRouter>
 
-    </BrowserRouter>
   );
 }
