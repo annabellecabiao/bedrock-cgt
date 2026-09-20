@@ -1,12 +1,12 @@
-import { usePageContext } from "vike-react/usePageContext";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 
 export function Link({ href, children }: { href: string; children: string }) {
-  const pageContext = usePageContext();
-  const { urlPathname } = pageContext;
-  const isActive = href === "/" ? urlPathname === href : urlPathname.startsWith(href);
+  const location = useLocation();
+  const isActive = href === "/" ? location.pathname === href : location.pathname.startsWith(href);
+
   return (
-    <a href={href} className={isActive ? "is-active" : undefined}>
+    <RouterLink to={href} className={isActive ? "is-active" : undefined}>
       {children}
-    </a>
+    </RouterLink>
   );
 }
