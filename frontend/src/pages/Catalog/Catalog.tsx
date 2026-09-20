@@ -12,7 +12,6 @@ type Product = {
 };
 
 async function fetchProducts(): Promise<Product[]> {
-  // Mock API – later you can replace with a real fetch("/api/products")
   return [
     // WINES
     {
@@ -105,14 +104,15 @@ export default function Catalog() {
     };
   }, []);
 
-  const categories = [
-    "All",
-    "Red Wine",
-    "White Wine",
-    "Sparkling Wine",
-    "100% Picual",
-    "Arbequina",
-    "Coupage",
+  const hierarchicalCategories = [
+    {
+      group: "Wines",
+      items: ["Red Wine", "White Wine", "Sparkling Wine"],
+    },
+    {
+      group: "Olive Oils",
+      items: ["100% Picual", "Arbequina", "Coupage"],
+    },
   ];
 
   const sortOptions = ["Default", "Price: Low to High", "Price: High to Low"];
@@ -146,8 +146,6 @@ export default function Catalog() {
   );
 
   function handleAddToCart(product: Product) {
-    // For now, just log – later connect to real cart store
-    console.log("Add to cart:", product);
     alert(`Added "${product.name}" (SKU: ${product.sku}) to cart.`);
   }
 
@@ -184,8 +182,16 @@ export default function Catalog() {
             setPage(1);
           }}
         >
-          {categories.map((c) => (
-            <option key={c}>{c}</option>
+          <option value="All">All Categories</option>
+
+          {hierarchicalCategories.map((group) => (
+            <optgroup key={group.group} label={group.group}>
+              {group.items.map((item) => (
+                <option key={item} value={item}>
+                  {item}
+                </option>
+              ))}
+            </optgroup>
           ))}
         </select>
 
@@ -281,7 +287,7 @@ export default function Catalog() {
             ))}
           </div>
 
-          {/* Pagination + "Load more" */}
+          {/* Pagination + Load More */}
           <div className="flex flex-col items-center mt-10 gap-4">
             <div className="flex gap-4 items-center">
               <button
@@ -341,20 +347,25 @@ export default function Catalog() {
                 <h2 className="text-2xl font-serif text-bedrock-navy mb-2">
                   {quickViewProduct.name}
                 </h2>
+
                 <p className="text-sm mb-2 text-bedrock-slate">
                   SKU: {quickViewProduct.sku}
                 </p>
+
                 <p className="text-bedrock-slate mb-2">
                   Category: {quickViewProduct.category}
                 </p>
+
                 <p className="text-bedrock-gold text-2xl font-bold mb-4">
                   ₱{quickViewProduct.price.toLocaleString()}
                 </p>
+
                 {quickViewProduct.badge && (
                   <p className="text-sm text-bedrock-navy mb-2">
                     Badge: {quickViewProduct.badge}
                   </p>
                 )}
+
                 <p className="text-sm mb-4">
                   Status:{" "}
                   {quickViewProduct.inStock ? (
