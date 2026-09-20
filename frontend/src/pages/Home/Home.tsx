@@ -1,8 +1,22 @@
+function Navbar() {
+  return (
+    <nav className="w-full bg-bedrock-navy px-6 py-4">
+      <a href="/" className="font-serif text-xl text-white">
+        Bedrock Consumer Goods Trading
+      </a>
+    </nav>
+  );
+}
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-bedrock-white">
-      {/* Hero Section */}
-      <section className="relative w-full h-[500px] bg-bedrock-slate/20">
+
+      {/* NAVBAR — retained on Home page */}
+      <Navbar />
+
+      {/* HERO SECTION */}
+      <section className="relative w-full h-[500px]">
         <img
           src="/images/hero-trading.jpg"
           alt="Trading Concept"
@@ -27,7 +41,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trading Concept Section */}
+      {/* TRADING CONCEPT SECTION */}
       <section className="px-6 py-16 max-w-5xl mx-auto">
         <h2 className="text-3xl font-serif text-bedrock-navy mb-6 text-center">
           Our Trading Concept
