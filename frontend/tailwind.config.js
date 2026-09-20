@@ -6,7 +6,7 @@ export default {
       colors: {
         bedrock: {
           navy: "#0A1A2F",
-          gold: "#D4A037",
+          gold: "#b0790b",
           slate: "#2E3A45",
           white: "#F7F7F7",
           red: "#8B1E1E",

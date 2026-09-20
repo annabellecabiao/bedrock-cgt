@@ -1,65 +1,89 @@
 export default function Catalog() {
+  const products = [
+    {
+      id: 1,
+      name: "Valencia Premium Red Wine",
+      price: 2450,
+      image: "/images/wine1.jpg",
+      category: "Wines",
+    },
+    {
+      id: 2,
+      name: "Spanish Olive Oil Extra Virgin",
+      price: 780,
+      image: "/images/olive1.jpg",
+      category: "Olive Oils",
+    },
+    {
+      id: 3,
+      name: "Rioja Reserva Wine",
+      price: 3100,
+      image: "/images/wine2.jpg",
+      category: "Wines",
+    },
+    {
+      id: 4,
+      name: "Andalusian Olive Oil Gold Press",
+      price: 950,
+      image: "/images/olive2.jpg",
+      category: "Olive Oils",
+    },
+    {
+      id: 5,
+      name: "Catalan White Wine",
+      price: 1800,
+      image: "/images/wine3.jpg",
+      category: "Wines",
+    },
+    {
+      id: 6,
+      name: "Premium Truffle Olive Oil",
+      price: 1250,
+      image: "/images/olive3.jpg",
+      category: "Olive Oils",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-bedrock-white px-6 py-10">
       <h1 className="text-3xl font-serif text-bedrock-navy mb-8">
         Product Catalog
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-
-        {/* Sidebar */}
-        <aside className="md:col-span-1 bg-white shadow-card rounded-lg p-5 border border-bedrock-slate/20">
-          <h2 className="text-xl font-semibold text-bedrock-navy mb-4">
-            Filters
-          </h2>
-
-          {/* Search */}
-          <input
-            type="text"
-            placeholder="Search products..."
-            className="w-full border border-bedrock-slate rounded-md px-3 py-2 focus:outline-bedrock-gold"
-          />
-
-          {/* Categories */}
-          <div className="mt-6">
-            <h3 className="text-bedrock-navy font-medium mb-2">Categories</h3>
-
-            <div className="flex flex-col gap-2">
-              <label className="flex items-center gap-2">
-                <input type="checkbox" className="accent-bedrock-gold" />
-                Wines
-              </label>
-
-              <label className="flex items-center gap-2">
-                <input type="checkbox" className="accent-bedrock-gold" />
-                Olive Oils
-              </label>
-
-              <label className="flex items-center gap-2">
-                <input type="checkbox" className="accent-bedrock-gold" />
-                Other Products
-              </label>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        {products.map((product) => (
+          <a
+            key={product.id}
+            href={`/product/${product.id}`}
+            className="bg-white shadow-card rounded-lg border border-bedrock-slate/20 overflow-hidden hover:shadow-lg transition-shadow"
+          >
+            <div className="h-64 bg-bedrock-slate/10">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-full object-cover"
+              />
             </div>
-          </div>
-        </aside>
 
-        {/* Product Grid */}
-        <section className="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Example Product Card */}
-          <div className="bg-white shadow-card rounded-lg p-4 border border-bedrock-slate/20">
-            <div className="h-40 bg-bedrock-slate/10 rounded-md mb-4"></div>
+            <div className="p-6">
+              <h2 className="text-xl font-serif text-bedrock-navy mb-2">
+                {product.name}
+              </h2>
 
-            <h3 className="text-bedrock-navy font-semibold">Product Name</h3>
-            <p className="text-bedrock-slate text-sm mb-2">Short description</p>
+              <p className="text-bedrock-slate mb-2">{product.category}</p>
 
-            <p className="text-bedrock-gold font-bold mb-4">₱1,234.56</p>
+              <p className="text-bedrock-gold text-2xl font-bold mb-4">
+                ₱{product.price.toLocaleString()}
+              </p>
 
-            <button className="bg-bedrock-gold text-bedrock-navy font-semibold px-4 py-2 rounded-md hover:brightness-110">
-              Add to Cart
-            </button>
-          </div>
-        </section>
+              <button className="bg-bedrock-gold text-bedrock-navy font-semibold px-4 py-2 rounded-md shadow-card hover:brightness-110">
+                View Details
+              </button>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   );
 }
+
