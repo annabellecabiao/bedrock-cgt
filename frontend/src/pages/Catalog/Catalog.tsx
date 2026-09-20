@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 
 type Product = {
   id: number;
+  sku: string;
   name: string;
   price: number;
   image: string;
@@ -11,83 +12,67 @@ type Product = {
 };
 
 async function fetchProducts(): Promise<Product[]> {
-  // Mock API – later you can replace with real fetch("/api/products")
+  // Mock API – later you can replace with a real fetch("/api/products")
   return [
+    // WINES
     {
       id: 1,
+      sku: "W-RW-001",
       name: "Valencia Premium Red Wine",
       price: 2450,
       image: "/images/wine1.jpg",
-      category: "Wines",
+      category: "Red Wine",
       badge: "Best Seller",
       inStock: true,
     },
     {
       id: 2,
-      name: "Spanish Olive Oil Extra Virgin",
-      price: 780,
-      image: "/images/olive1.jpg",
-      category: "Olive Oils",
-      badge: "New",
+      sku: "W-WW-002",
+      name: "Catalan White Wine",
+      price: 1800,
+      image: "/images/wine3.jpg",
+      category: "White Wine",
       inStock: true,
     },
     {
       id: 3,
-      name: "Rioja Reserva Wine",
+      sku: "W-SW-003",
+      name: "Rioja Sparkling Wine",
       price: 3100,
       image: "/images/wine2.jpg",
-      category: "Wines",
+      category: "Sparkling Wine",
       badge: "Limited",
       inStock: false,
     },
+
+    // OLIVE OILS
     {
       id: 4,
-      name: "Andalusian Olive Oil Gold Press",
+      sku: "O-PIC-004",
+      name: "100% Picual Extra Virgin Olive Oil",
       price: 950,
-      image: "/images/olive2.jpg",
-      category: "Olive Oils",
-      inStock: true,
-    },
-    {
-      id: 5,
-      name: "Catalan White Wine",
-      price: 1800,
-      image: "/images/wine3.jpg",
-      category: "Wines",
-      inStock: true,
-    },
-    {
-      id: 6,
-      name: "Premium Truffle Olive Oil",
-      price: 1250,
-      image: "/images/olive3.jpg",
-      category: "Olive Oils",
-      badge: "Best Seller",
-      inStock: true,
-    },
-    {
-      id: 7,
-      name: "Galician Red Wine Reserva",
-      price: 2700,
-      image: "/images/wine4.jpg",
-      category: "Wines",
-      inStock: false,
-    },
-    {
-      id: 8,
-      name: "Mediterranean Olive Oil Blend",
-      price: 650,
-      image: "/images/olive4.jpg",
-      category: "Olive Oils",
+      image: "/images/olive1.jpg",
+      category: "100% Picual",
       badge: "New",
       inStock: true,
     },
     {
-      id: 9,
-      name: "Basque Country White Wine",
-      price: 2100,
-      image: "/images/wine5.jpg",
-      category: "Wines",
+      id: 5,
+      sku: "O-ARB-005",
+      name: "Arbequina Olive Oil Gold Press",
+      price: 780,
+      image: "/images/olive2.jpg",
+      category: "Arbequina",
+      inStock: true,
+    },
+    {
+      id: 6,
+      sku: "O-COU-006",
+      name: "Coupage Mediterranean Olive Oil",
+      price: 1250,
+      image: "/images/olive3.jpg",
+      category: "Coupage",
+      badge: "Best Seller",
       inStock: true,
     },
   ];
@@ -120,11 +105,15 @@ export default function Catalog() {
     };
   }, []);
 
-  const categories = useMemo(() => {
-    const set = new Set<string>();
-    products.forEach((p) => set.add(p.category));
-    return ["All", ...Array.from(set)];
-  }, [products]);
+  const categories = [
+    "All",
+    "Red Wine",
+    "White Wine",
+    "Sparkling Wine",
+    "100% Picual",
+    "Arbequina",
+    "Coupage",
+  ];
 
   const sortOptions = ["Default", "Price: Low to High", "Price: High to Low"];
 
@@ -159,7 +148,7 @@ export default function Catalog() {
   function handleAddToCart(product: Product) {
     // For now, just log – later connect to real cart store
     console.log("Add to cart:", product);
-    alert(`Added "${product.name}" to cart.`);
+    alert(`Added "${product.name}" (SKU: ${product.sku}) to cart.`);
   }
 
   function handleLoadMore() {
@@ -257,9 +246,13 @@ export default function Catalog() {
                 </div>
 
                 <div className="p-6">
-                  <h2 className="text-xl font-serif text-bedrock-navy mb-2">
+                  <h2 className="text-xl font-serif text-bedrock-navy mb-1">
                     {product.name}
                   </h2>
+
+                  <p className="text-sm text-bedrock-slate/70 mb-2">
+                    SKU: {product.sku}
+                  </p>
 
                   <p className="text-bedrock-slate mb-2">{product.category}</p>
 
@@ -288,7 +281,7 @@ export default function Catalog() {
             ))}
           </div>
 
-          {/* Pagination + "Load more" (infinite scroll feel) */}
+          {/* Pagination + "Load more" */}
           <div className="flex flex-col items-center mt-10 gap-4">
             <div className="flex gap-4 items-center">
               <button
@@ -348,6 +341,9 @@ export default function Catalog() {
                 <h2 className="text-2xl font-serif text-bedrock-navy mb-2">
                   {quickViewProduct.name}
                 </h2>
+                <p className="text-sm mb-2 text-bedrock-slate">
+                  SKU: {quickViewProduct.sku}
+                </p>
                 <p className="text-bedrock-slate mb-2">
                   Category: {quickViewProduct.category}
                 </p>
